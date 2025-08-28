@@ -7,27 +7,7 @@
 <html>
 <head>
     <title>Página de Inicio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding-top: 50px;
-        }
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            display: inline-block;
-            padding: 30px 50px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #555;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/estilos.css">
 </head>
 <body>
     <div class="container">

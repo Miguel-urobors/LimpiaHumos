@@ -32,7 +32,7 @@ public class EstadisticaFumadorDAOImpl extends GenericDAOImpl<EstadisticaFumador
     }
     
     @Override
-public EstadisticaFumador findUltimaEstadisticaPorUsuario(Long idUsuario) {
+    public EstadisticaFumador findUltimaEstadisticaPorUsuario(Long idUsuario) {
     try {
         return em.createQuery(
                 "SELECT e FROM EstadisticaFumador e WHERE e.usuario.id_usuario = :idUsuario ORDER BY e.fecha_estadistica DESC",

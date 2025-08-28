@@ -45,8 +45,10 @@ public class Usuario {
     @Temporal(TemporalType.DATE)
     private Date fecha_nacimiento;
     
+    @NotNull(message = "La edad es obligatoria")
     private String contraseña;
     
+    @NotNull(message = "La edad es obligatoria")
     private String correo;
 
     @OneToOne

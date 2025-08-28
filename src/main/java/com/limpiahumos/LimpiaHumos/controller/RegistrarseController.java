@@ -5,15 +5,18 @@
 package com.limpiahumos.LimpiaHumos.controller;
 
 import com.limpiahumos.LimpiaHumos.DAO.CuestionarioDAO;
+import com.limpiahumos.LimpiaHumos.DAO.EstadisticaFumadorDAO;
 import com.limpiahumos.LimpiaHumos.DAO.UsuarioDAO;
 import com.limpiahumos.LimpiaHumos.entity.Usuario;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -34,6 +37,9 @@ public class RegistrarseController extends BaseController{
    private UsuarioDAO usarioDAO;
    
    @Autowired
+   private EstadisticaFumadorDAO estadisticaFumadorDAO;
+   
+   @Autowired
    private CuestionarioDAO cuestionarioDAO;
    
     
@@ -43,14 +49,27 @@ public class RegistrarseController extends BaseController{
         return "registro";
     }
    
-   @Transactional
+    /**
+     *
+     * @param usuario
+     * @param result
+     * @param model
+     * @return
+     */
+    @Transactional
    @PostMapping("/crearUsuario")
-    public String crearUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
+    public String crearUsuario(@Valid @ModelAttribute("usuario") Usuario usuario,BindingResult result,Model model) {
+        
+    if (result.hasErrors()) {
+        return "registro";
+    }
     if (usuario.getCuestionario() != null && usuario.getCuestionario().getId_cuestionario() == null) {
         cuestionarioDAO.save(usuario.getCuestionario());
     }
+    
     usarioDAO.save(usuario);
-    return "inicio"; 
+    
+    return "datos"; 
     
     }
     

@@ -23,7 +23,9 @@ public class EstadisticaFumador {
     private Long id_estadistica_fumador;
 
     private Long tiempo_sin_fumar;
+    
     private Long dinero_ahorrado;
+    
     private Integer cigarillos_no_fumados;
 
     @Temporal(TemporalType.DATE)

@@ -24,8 +24,11 @@ public class Metas {
     private Long id_metas;
 
     private String nombre;
+    
     private String condición;
+    
     private Boolean desbloqueada;
+    
     @Temporal(TemporalType.DATE)
     private Date fecha_desbloqueo;
 

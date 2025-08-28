@@ -25,7 +25,9 @@ public class Objetivos {
     private Long id_objetivos;
 
     private String nombre_objetivo;
+    
     private String diario;
+    
     private String tipo_objetivo;
 
     @Temporal(TemporalType.DATE)

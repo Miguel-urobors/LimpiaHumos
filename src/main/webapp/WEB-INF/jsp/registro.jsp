@@ -3,59 +3,71 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Formulario de Registro</title>
-
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
-                text-align: center;
-                padding-top: 50px;
-            }
-            .container {
-                background-color: white;
-                border-radius: 10px;
-                display: inline-block;
-                padding: 30px 50px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            }
-            h1 {
-                color: #333;
-            }
-            p {
-                color: #555;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="/css/estilos.css">
     </head>
     <body>
         <div class="container">
             <form:form action="/limpiaHumos/registrarse/crearUsuario" method="post" modelAttribute="usuario">
-                Nombre: <form:input path="nombre" /><br/>
-                Edad: <form:input path="edad" /><br/>
-                Correo: <form:input path="correo" /><br/>
-                Genero: 
-                <select name="genero" id="genero">
-                    <option value="Hombre">Hombre</option>
-                    <option value="Mujer">Mujer</option>
-                    <option value="Otro">Otro</option>
-                </select><br/>
 
-                Fecha nacimiento: <form:input path="fecha_nacimiento" type="date" /><br/>
+                Nombre: <form:input path="nombre" />
+                <form:errors path="nombre" cssClass="error"/><br/>
 
+                Edad: <form:input path="edad" />
+                <form:errors path="edad" cssClass="error"/><br/>
 
-                Contraseña: <form:input path="contraseña" type="password" /><br/>
+                Correo: <form:input path="correo" />
+                <form:errors path="correo" cssClass="error"/><br/>
 
-                ¿A que edad empezaste a fumar?: <form:input path="cuestionario.edad_empezar" /><br/>
-                ¿Cuantos cigarrillos fumas al dia?: <form:input path="cuestionario.cigarrillos_dia" /><br/>
-                ¿Cuantas veces ha intentado para de fumar ?: <form:input path="cuestionario.intentos_parar" /><br/>
+                Género: 
+                <form:select path="genero">
+                    <form:option value="" label="Elige..."/>
+                    <form:option value="Hombre" label="Hombre"/>
+                    <form:option value="Mujer" label="Mujer"/>
+                    <form:option value="Otro" label="Otro"/>
+                </form:select>
+                <form:errors path="genero" cssClass="error"/>
+                <br/>
+                <br/>
 
-                Su razon para parar de fumar: <textarea path="cuestionario.razon_parar" rows="4" cols="50"></textarea><br/>
+                Fecha nacimiento: <form:input path="fecha_nacimiento" type="date" />
+                <form:errors path="fecha_nacimiento" cssClass="error"/>
+                <br/>
+                <br/>
+                
+                Contraseña: <form:input path="contraseña" type="password" />
+                <form:errors path="contraseña" cssClass="error"/>
+                <br/>
+                <br/>
+
+                ¿A qué edad empezaste a fumar?: <form:input path="cuestionario.edad_empezar" />
+                <form:errors path="cuestionario.edad_empezar" cssClass="error"/>
+                <br/>
+                <br/>
+                ¿Cuántos cigarrillos fumas al día?: <form:input path="cuestionario.cigarrillos_dia" />
+                <form:errors path="cuestionario.cigarrillos_dia" cssClass="error"/>
+                <br/>
+                <br/>
+                
+                ¿Cuántas veces ha intentado parar de fumar?: <form:input path="cuestionario.intentos_parar" />
+                <form:errors path="cuestionario.intentos_parar" cssClass="error"/>
+                <br/>
+                <br/>
+                
+                Su razón para parar de fumar: 
+                <form:textarea path="cuestionario.razon_parar" rows="4" cols="50"></form:textarea>
+                <form:errors path="cuestionario.razon_parar" cssClass="error"/>
+                <br/>
+                <br/>
 
                 <input type="submit" value="Enviar" />
-            </form:form>
 
+            </form:form>
+        </div>
     </body>
+
 </html>

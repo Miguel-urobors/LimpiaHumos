@@ -1,0 +1,75 @@
+/* Aplica a los mensajes mostrados con <form:errors cssClass="error" /> */
+.error {
+    color: #d93025;
+    /* rojo similar al de Google */
+    font-size: 0.9em;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+/* Si quieres resaltar todos los campos con error */
+input.error,
+select.error,
+textarea.error {
+    border: 1px solid #d93025;
+    background-color: #ffe6e6;
+}
+
+/* Estilo general para el formulario si quieres usarlo */
+form {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Botón de envío */
+form input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 30px 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}
