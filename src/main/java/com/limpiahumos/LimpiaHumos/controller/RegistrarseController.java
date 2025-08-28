@@ -7,11 +7,14 @@ package com.limpiahumos.LimpiaHumos.controller;
 import com.limpiahumos.LimpiaHumos.DAO.CuestionarioDAO;
 import com.limpiahumos.LimpiaHumos.DAO.EstadisticaFumadorDAO;
 import com.limpiahumos.LimpiaHumos.DAO.UsuarioDAO;
+import com.limpiahumos.LimpiaHumos.entity.EstadisticaFumador;
 import com.limpiahumos.LimpiaHumos.entity.Usuario;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -56,7 +59,7 @@ public class RegistrarseController extends BaseController{
      * @param model
      * @return
      */
-    @Transactional
+   @Transactional
    @PostMapping("/crearUsuario")
     public String crearUsuario(@Valid @ModelAttribute("usuario") Usuario usuario,BindingResult result,Model model) {
         
@@ -66,10 +69,13 @@ public class RegistrarseController extends BaseController{
     if (usuario.getCuestionario() != null && usuario.getCuestionario().getId_cuestionario() == null) {
         cuestionarioDAO.save(usuario.getCuestionario());
     }
-    
+     usuario.setEstadisticaFumador( iniciarUsuario());
+        for (EstadisticaFumador ef : usuario.getEstadisticaFumador()) {
+            estadisticaFumadorDAO.save(ef);
+        }
     usarioDAO.save(usuario);
-    
-    return "datos"; 
+
+    return "redirect:/datos"; 
     
     }
     
@@ -79,5 +85,18 @@ public class RegistrarseController extends BaseController{
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, "fecha_nacimiento", new CustomDateEditor(dateFormat, true));
+    }
+    
+    private List<EstadisticaFumador> iniciarUsuario(){
+        
+    EstadisticaFumador estadisticasFumador= new EstadisticaFumador();
+    estadisticasFumador.setCigarillos_no_fumados(0);
+    estadisticasFumador.setDinero_ahorrado(0L);
+    estadisticasFumador.setTiempo_sin_fumar(0L);
+    estadisticasFumador.setFecha_estadistica(new Date());
+    List<EstadisticaFumador> ListaEF= new ArrayList<>();
+    ListaEF.add(estadisticasFumador);
+    return ListaEF;
+     
     }
 }

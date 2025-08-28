@@ -5,16 +5,19 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Página de Inicio</title>
-    <link rel="stylesheet" type="text/css" href="/css/estilos.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Bienvenido a la Aplicación</h1>
-        <p>${mensaje}</p>
-        <a href="${pageContext.request.contextPath}/limpiaHumos/registrarse">Registrarse</a>
-    </div>
-    
-</body>
+    <head>
+        <title>Página de Inicio</title>
+        <link rel="stylesheet" type="text/css" href="/css/estilos.css">
+    </head>
+    <body>
+        <div class="container">
+            <display:table name="estadisticas" requestURI="" pagesize="10" sort="list" >
+                <display:column property="fecha_estadistica" title="Fecha" />
+                <display:column property="dinero_ahorrado" title="Dinero Ahorrado" />
+                <display:column property="tiempo_sin_fumar" title="Tiempo sin fumar" />
+                <display:column property="cigarillos_no_fumados" title="Cigarillos no fumados" />
+            </display:table>
+        </div>
+
+    </body>
 </html>

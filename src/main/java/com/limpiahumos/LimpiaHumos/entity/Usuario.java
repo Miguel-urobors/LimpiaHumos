@@ -4,6 +4,7 @@
  */
 package com.limpiahumos.LimpiaHumos.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,10 +20,10 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
-
 
 @Entity
 @Table(name = "usuario")
@@ -31,29 +32,28 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_usuario;
-    
+
     @NotBlank(message = "El nombre no puede estar vacío")
     private String nombre;
-   
+
     @NotNull(message = "La edad es obligatoria")
     @Min(value = 0, message = "La edad no puede ser negativa")
     private Integer edad;
-   
+
     @NotBlank(message = "El genero no puede estar vacío")
     private String genero;
 
     @Temporal(TemporalType.DATE)
     private Date fecha_nacimiento;
-    
+
     @NotNull(message = "La edad es obligatoria")
     private String contraseña;
-    
+
     @NotNull(message = "La edad es obligatoria")
     private String correo;
 
-    @OneToOne
-    @JoinColumn(name = "id_estadistica_fumador")
-    private EstadisticaFumador estadisticaFumador;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EstadisticaFumador> estadisticaFumador = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "id_usuario")
@@ -61,18 +61,16 @@ public class Usuario {
 
     @ManyToMany
     @JoinTable(
-        name = "usuario_metas",
-        joinColumns = @JoinColumn(name = "id_usuario"),
-        inverseJoinColumns = @JoinColumn(name = "id_metas")
+            name = "usuario_metas",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_metas")
     )
     private List<Metas> metas;
 
-    @OneToMany
-    @JoinColumn(name = "id_usuario")
-    private List<Objetivos> objetivos;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Objetivos> objetivos = new ArrayList<>();
 
     // Getters y Setters
-
     public Long getId_usuario() {
         return id_usuario;
     }
@@ -108,6 +106,7 @@ public class Usuario {
     public Date getFecha_nacimiento() {
         return fecha_nacimiento;
     }
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public void setFecha_nacimiento(Date fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
@@ -129,11 +128,11 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public EstadisticaFumador getEstadisticaFumador() {
+    public List<EstadisticaFumador> getEstadisticaFumador() {
         return estadisticaFumador;
     }
 
-    public void setEstadisticaFumador(EstadisticaFumador estadisticaFumador) {
+    public void setEstadisticaFumador(List<EstadisticaFumador> estadisticaFumador) {
         this.estadisticaFumador = estadisticaFumador;
     }
 
@@ -160,6 +159,5 @@ public class Usuario {
     public void setObjetivos(List<Objetivos> objetivos) {
         this.objetivos = objetivos;
     }
-    
-    
+
 }
