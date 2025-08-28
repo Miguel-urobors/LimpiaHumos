@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+
 import java.util.Date;
 import java.util.List;
 
@@ -24,11 +25,11 @@ public class Metas {
     private Long id_metas;
 
     private String nombre;
-    
-    private String condición;
-    
+
+    private String condicion;
+
     private Boolean desbloqueada;
-    
+
     @Temporal(TemporalType.DATE)
     private Date fecha_desbloqueo;
 
@@ -61,14 +62,6 @@ public class Metas {
         this.nombre = nombre;
     }
 
-    public String getCondición() {
-        return condición;
-    }
-
-    public void setCondición(String condición) {
-        this.condición = condición;
-    }
-
     public Date getFecha_desbloqueo() {
         return fecha_desbloqueo;
     }
@@ -84,5 +77,8 @@ public class Metas {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-    
+
+    public String getCondicion() { return condicion; }
+
+    public void setCondicion(String condicion) { this.condicion = condicion; }
 }
