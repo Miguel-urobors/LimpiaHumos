@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 
 <!DOCTYPE html>
@@ -10,13 +10,13 @@
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
     </head>
     <body>
+
         <div class="container">
-            <display:table name="estadisticas" requestURI="" pagesize="10" sort="list" >
-                <display:column property="fecha_estadistica" title="Fecha" />
-                <display:column property="dinero_ahorrado" title="Dinero Ahorrado" />
-                <display:column property="tiempo_sin_fumar" title="Tiempo sin fumar" />
-                <display:column property="cigarillos_no_fumados" title="Cigarillos no fumados" />
-            </display:table>
+            <div class="estadistica-detalle">
+                <p><strong>Dinero Ahorrado:</strong> <c:out value="${estadisticas.dinero_ahorrado}" /> €</p>
+                <p><strong>Tiempo sin fumar:</strong> <c:out value="${estadisticas.tiempo_sin_fumar}" /> días</p>
+                <p><strong>Cigarrillos no fumados:</strong> <c:out value="${estadisticas.cigarillos_no_fumados}" /></p>
+            </div>
         </div>
 
     </body>

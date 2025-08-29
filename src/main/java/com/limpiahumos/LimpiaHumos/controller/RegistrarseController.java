@@ -69,13 +69,13 @@ public class RegistrarseController extends BaseController{
     if (usuario.getCuestionario() != null && usuario.getCuestionario().getId_cuestionario() == null) {
         cuestionarioDAO.save(usuario.getCuestionario());
     }
-     usuario.setEstadisticaFumador( iniciarUsuario());
+     usuario.setEstadisticaFumador( iniciarEstadisticas(usuario));
         for (EstadisticaFumador ef : usuario.getEstadisticaFumador()) {
             estadisticaFumadorDAO.save(ef);
         }
     usarioDAO.save(usuario);
 
-    return "redirect:/datos"; 
+    return "redirect:"+BASE_CONTROLLER+"/datos?idUsuario=" + usuario.getId_usuario();
     
     }
     
@@ -87,9 +87,10 @@ public class RegistrarseController extends BaseController{
         binder.registerCustomEditor(Date.class, "fecha_nacimiento", new CustomDateEditor(dateFormat, true));
     }
     
-    private List<EstadisticaFumador> iniciarUsuario(){
+    private List<EstadisticaFumador> iniciarEstadisticas(Usuario usaurio){
         
     EstadisticaFumador estadisticasFumador= new EstadisticaFumador();
+    estadisticasFumador.setUsuario(usaurio);
     estadisticasFumador.setCigarillos_no_fumados(0);
     estadisticasFumador.setDinero_ahorrado(0L);
     estadisticasFumador.setTiempo_sin_fumar(0L);
