@@ -13,7 +13,7 @@
 
         <div class="container">
             <div class="estadistica-detalle">
-                <p><strong>Dinero Ahorrado:</strong> <c:out value="${estadisticas.dinero_ahorrado}" /> €</p>
+                <p><strong>Dinero Ahorrado:</strong> <c:out value="${estadisticas.dinero_ahorrado/100}" /> €</p>
                 <p><strong>Tiempo sin fumar:</strong> <c:out value="${estadisticas.tiempo_sin_fumar}" /> días</p>
                 <p><strong>Cigarrillos no fumados:</strong> <c:out value="${estadisticas.cigarillos_no_fumados}" /></p>
             </div>

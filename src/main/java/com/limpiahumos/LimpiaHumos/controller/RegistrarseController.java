@@ -90,7 +90,7 @@ public class RegistrarseController extends BaseController{
         
     EstadisticaFumador estadisticasFumador= new EstadisticaFumador();
     estadisticasFumador.setUsuario(usaurio);
-    estadisticasFumador.setCigarillos_no_fumados(0);
+    estadisticasFumador.setCigarillos_no_fumados(0L);
     estadisticasFumador.setDinero_ahorrado(0L);
     estadisticasFumador.setTiempo_sin_fumar(0L);
     estadisticasFumador.setFecha_estadistica(new Date());

@@ -28,7 +28,7 @@ public class EstadisticaFumador implements Serializable {
     
     private Long dinero_ahorrado;
     
-    private Integer cigarillos_no_fumados;
+    private Long cigarillos_no_fumados;
 
     @Temporal(TemporalType.DATE)
     private Date fecha_estadistica;
@@ -57,15 +57,16 @@ public class EstadisticaFumador implements Serializable {
         return dinero_ahorrado;
     }
 
+    //A la hora de representar dividir entre 100
     public void setDinero_ahorrado(Long dinero_ahorrado) {
         this.dinero_ahorrado = dinero_ahorrado;
     }
 
-    public Integer getCigarillos_no_fumados() {
+    public Long getCigarillos_no_fumados() {
         return cigarillos_no_fumados;
     }
 
-    public void setCigarillos_no_fumados(Integer cigarillos_no_fumados) {
+    public void setCigarillos_no_fumados(Long cigarillos_no_fumados) {
         this.cigarillos_no_fumados = cigarillos_no_fumados;
     }
 

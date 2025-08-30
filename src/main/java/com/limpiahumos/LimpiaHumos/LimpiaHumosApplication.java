@@ -16,10 +16,4 @@ public class LimpiaHumosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LimpiaHumosApplication.class, args);
 	}
-
-	@Autowired
-	MetasDAO metasDAO;
-
-
-
 }
