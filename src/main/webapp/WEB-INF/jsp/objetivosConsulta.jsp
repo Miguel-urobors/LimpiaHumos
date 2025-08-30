@@ -15,7 +15,7 @@
             <h1>Lista de Objetivos</h1>
 
             <!-- Botón para añadir un nuevo objetivo -->
-            <a href="${pageContext.request.contextPath}/objetivos/crear">
+            <a href="${pageContext.request.contextPath}/limpiaHumos/objetivos/crear?id_usuario=${id_usuario}">
                 <button>Añadir Nuevo Objetivo</button>
             </a>
 
@@ -44,7 +44,7 @@
                             <td>${objetivo.fecha_fin_objetivo}</td>
                             <td>
                                 <!-- Enlace para editar el objetivo -->
-                                <a href="${pageContext.request.contextPath}/objetivos/editar/${objetivo.id_objetivos}">Editar</a>
+                                <a href="${pageContext.request.contextPath}/limpiaHumos/objetivos/editar/${objetivo.id_objetivos}">Editar</a>
                             </td>
                         </tr>
                     </c:forEach>

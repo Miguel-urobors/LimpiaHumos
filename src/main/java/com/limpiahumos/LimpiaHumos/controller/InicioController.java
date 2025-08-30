@@ -42,7 +42,7 @@ public class InicioController extends BaseController{
 
         if (usuario != null) {
             session.setAttribute("usuarioLogueado", usuario);
-            return "redirect:"+BASE_CONTROLLER+"/datos?idUsuario=" + usuario.getId_usuario();
+            return "redirect:"+BASE_CONTROLLER+"/datos?id_usuario=" + usuario.getId_usuario();
         } else {
             model.addAttribute("error", "Correo o contraseña incorrectos");
             model.addAttribute("mensaje", "¡Has llegado a la página de inicio!");

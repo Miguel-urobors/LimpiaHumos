@@ -26,14 +26,16 @@ public class DatosController {
     EstadisticaFumadorDAO estadisticaFumadorDAO;
 
     @GetMapping("")
-    public String doInt(@RequestParam("idUsuario") Long idUsuario, Model model) {
+    public String doInt(@RequestParam("id_usuario") Long idUsuario, Model model) {
 
         // Llamar al método para obtener las estadísticas del usuario
         EstadisticaFumador estadisticas = estadisticaFumadorDAO.findUltimaEstadisticaPorUsuario(idUsuario);
-
+  
         // Pasar las estadísticas al modelo
         model.addAttribute("estadisticas", estadisticas);
 
         return "datos";
     }
+    
+    
 }

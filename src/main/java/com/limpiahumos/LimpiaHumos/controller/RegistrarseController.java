@@ -75,11 +75,10 @@ public class RegistrarseController extends BaseController{
         }
     usarioDAO.save(usuario);
 
-    return "redirect:"+BASE_CONTROLLER+"/datos?idUsuario=" + usuario.getId_usuario();
+    return "redirect:"+BASE_CONTROLLER+"/datos?id_usuario=" + usuario.getId_usuario();
     
     }
     
-      // Registrar un CustomDateEditor
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

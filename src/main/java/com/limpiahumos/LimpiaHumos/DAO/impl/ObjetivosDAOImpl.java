@@ -38,7 +38,7 @@ public class ObjetivosDAOImpl extends GenericDAOImpl<Objetivos, Long> implements
     }
 
     @Override
-    public Objetivos CrearObjetivo(Objetivos objetivo) {
+    public Objetivos crearObjetivo(Objetivos objetivo) {
         // Usar persist() para guardar un nuevo objetivo en la base de datos
         entityManager.persist(objetivo);
         return objetivo; // Retorna el objeto guardado (con ID asignado si es nuevo)
@@ -49,5 +49,6 @@ public class ObjetivosDAOImpl extends GenericDAOImpl<Objetivos, Long> implements
 
         return entityManager.merge(objetivo);
     }
+    
 
 }
