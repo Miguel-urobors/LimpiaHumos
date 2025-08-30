@@ -24,6 +24,7 @@
         </form>
 
         <form action="${pageContext.request.contextPath}/limpiaHumos/objetivos" method="get">
+            <input type="hidden" name="id_usuario" value="${estadisticas.usuario.id_usuario}" />
             <button type="submit">Ir a Objetivos</button>
         </form>
 

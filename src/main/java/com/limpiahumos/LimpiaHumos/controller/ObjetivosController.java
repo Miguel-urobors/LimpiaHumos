@@ -16,34 +16,32 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(ObjetivosController.OBEJTIVO_CONTROLLER)
-public class ObjetivosController extends BaseController{
-    
-     public static final String OBEJTIVO_CONTROLLER= BASE_CONTROLLER+"/objetivos";
-     
+public class ObjetivosController extends BaseController {
+
+    public static final String OBEJTIVO_CONTROLLER = BASE_CONTROLLER + "/objetivos";
+
     @Autowired
     ObjetivosDAO objetivoDAO;
-     
+
     @GetMapping("")
-    public String inicio(Model model) {
-        
-        List<Objetivos> objetivosList = objetivoDAO.obtenerTodosObjetivos();
-            
-        model.addAttribute("objetivosList", objetivosList);
-        
-        return "objetivosConsulta"; 
+    public String mostrarObjetivos(@RequestParam("id_usuario") Long idUsuario, Model model) {
+        List<Objetivos> objetivos = objetivoDAO.obtenerTodosObjetivos(idUsuario);
+        model.addAttribute("objetivosList", objetivos);
+        return "objetivosConsulta";
     }
 
-    
     @GetMapping("/editar/{id}")
     public String editarObjetivo(@PathVariable Long id, Model model) {
-    Objetivos objetivo = objetivoDAO.obtenerObjetivoPorId(id);
-    model.addAttribute("objetivo", objetivo);
-    return "editarObjetivo"; // Redirige a la página de edición
-}
-        // Método para mostrar la página de creación de objetivos
+        Objetivos objetivo = objetivoDAO.obtenerObjetivoPorId(id);
+        model.addAttribute("objetivo", objetivo);
+        return "editarObjetivo"; // Redirige a la página de edición
+    }
+    // Método para mostrar la página de creación de objetivos
+
     @GetMapping("/crear")
     public String crearObjetivoForm(Model model) {
         // Crear un nuevo objeto objetivo vacío

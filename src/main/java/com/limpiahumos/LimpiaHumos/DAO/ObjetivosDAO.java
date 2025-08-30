@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ObjetivosDAO extends GenericDAO<Objetivos, Long> {
 
-        public List<Objetivos> obtenerTodosObjetivos();
+        public List<Objetivos> obtenerTodosObjetivos(Long idUsuario);
         public Objetivos obtenerObjetivoPorId(Long id);
         public Objetivos guardarObjetivo(Objetivos objetivo);
         public Objetivos CrearObjetivo(Objetivos objetivo);

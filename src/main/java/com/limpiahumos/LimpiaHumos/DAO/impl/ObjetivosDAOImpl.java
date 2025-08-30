@@ -24,8 +24,12 @@ public class ObjetivosDAOImpl extends GenericDAOImpl<Objetivos, Long> implements
     private EntityManager entityManager;
 
     @Override
-    public List<Objetivos> obtenerTodosObjetivos() {
-        return entityManager.createQuery("SELECT o FROM Objetivos o", Objetivos.class).getResultList();
+    public List<Objetivos> obtenerTodosObjetivos(Long idUsuario) {
+        // Crear la consulta JPQL para obtener todos los objetivos de un usuario específico
+        String jpql = "SELECT o FROM Objetivos o WHERE o.usuario.id_usuario = :idUsuario";
+        return entityManager.createQuery(jpql, Objetivos.class)
+                .setParameter("idUsuario", idUsuario) // Pasar el ID del usuario como parámetro
+                .getResultList();
     }
 
     @Override
@@ -42,8 +46,8 @@ public class ObjetivosDAOImpl extends GenericDAOImpl<Objetivos, Long> implements
 
     @Override
     public Objetivos guardarObjetivo(Objetivos objetivo) {
-        
-        return entityManager.merge(objetivo); 
+
+        return entityManager.merge(objetivo);
     }
 
 }
