@@ -17,9 +17,11 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +29,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,10 +50,11 @@ public class Usuario {
     @Temporal(TemporalType.DATE)
     private Date fecha_nacimiento;
 
-    @NotNull(message = "La edad es obligatoria")
+    @NotBlank(message = "La contraseña no puede estar vacía")
     private String contraseña;
 
-    @NotNull(message = "La edad es obligatoria")
+    @Email(message = "Correo inválido")
+    @NotBlank(message = "El correo es obligatorio")
     private String correo;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)

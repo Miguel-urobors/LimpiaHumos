@@ -6,7 +6,7 @@ package com.limpiahumos.LimpiaHumos.DAO;
 
 import com.limpiahumos.LimpiaHumos.entity.Usuario;
 
-
-
-
- public interface UsuarioDAO extends GenericDAO<Usuario, Long> {}
+ public interface UsuarioDAO extends GenericDAO<Usuario, Long> {
+ 
+     Usuario findByNombreAndContraseña(String nombre, String contraseña);
+ }

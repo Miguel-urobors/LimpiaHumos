@@ -12,13 +12,14 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import java.io.Serializable;
 
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "metas")
-public class Metas {
+public class Metas implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

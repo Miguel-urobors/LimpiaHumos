@@ -7,6 +7,7 @@ package com.limpiahumos.LimpiaHumos.DAO.impl;
 import com.limpiahumos.LimpiaHumos.DAO.UsuarioDAO;
 import com.limpiahumos.LimpiaHumos.entity.Usuario;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -48,5 +49,20 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     @Override
     public void delete(Usuario entity) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+        @PersistenceContext
+    private EntityManager em;
+
+    @Override
+    public Usuario findByNombreAndContraseña(String nombre, String contraseña) {
+        try {
+            return em.createQuery("SELECT u FROM Usuario u WHERE u.nombre = :nombre AND u.contraseña = :contraseña", Usuario.class)
+                    .setParameter("nombre", nombre)
+                    .setParameter("contraseña", contraseña)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }

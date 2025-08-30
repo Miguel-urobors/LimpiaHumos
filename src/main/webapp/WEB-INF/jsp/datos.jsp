@@ -19,5 +19,13 @@
             </div>
         </div>
 
+        <form action="${pageContext.request.contextPath}/limpiaHumos/metas" method="get">
+            <button type="submit">Ir a Metas</button>
+        </form>
+
+        <form action="${pageContext.request.contextPath}/limpiaHumos/objetivos" method="get">
+            <button type="submit">Ir a Objetivos</button>
+        </form>
+
     </body>
 </html>

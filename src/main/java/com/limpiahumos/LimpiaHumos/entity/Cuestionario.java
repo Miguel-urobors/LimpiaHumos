@@ -16,11 +16,12 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "cuestionario")
-public class Cuestionario {
+public class Cuestionario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

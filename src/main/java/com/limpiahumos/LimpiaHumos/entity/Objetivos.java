@@ -13,12 +13,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import java.io.Serializable;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "objetivos")
-public class Objetivos {
+public class Objetivos implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
