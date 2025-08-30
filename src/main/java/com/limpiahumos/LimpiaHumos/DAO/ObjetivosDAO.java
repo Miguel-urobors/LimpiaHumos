@@ -5,5 +5,12 @@
 package com.limpiahumos.LimpiaHumos.DAO;
 
 import com.limpiahumos.LimpiaHumos.entity.Objetivos;
+import java.util.List;
 
-public interface ObjetivosDAO extends GenericDAO<Objetivos, Long> {}
+public interface ObjetivosDAO extends GenericDAO<Objetivos, Long> {
+
+        public List<Objetivos> obtenerTodosObjetivos();
+        public Objetivos obtenerObjetivoPorId(Long id);
+        public Objetivos guardarObjetivo(Objetivos objetivo);
+        public Objetivos CrearObjetivo(Objetivos objetivo);
+}
