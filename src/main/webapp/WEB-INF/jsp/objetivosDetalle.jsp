@@ -11,12 +11,17 @@
     </head>
     <body>
         <div class="form-container">
-            <h1>Crear Objetivo</h1>
+            <h1>${titulo}</h1>
 
+            <c:set var="isNew" value="${empty objetivo.id_objetivos}" />
             <!-- Formulario para crear un objetivo -->
             <form action="${pageContext.request.contextPath}/limpiaHumos/objetivos/guardar" method="post">
                 <!-- Campo oculto para el id_usuario -->
                 <input type="hidden" name="id_usuario" value="${id_usuario}" />
+                <c:if test="${!isNew}">
+                    <!-- Campo oculto con el ID del objetivo, solo si es edición -->
+                    <input type="hidden" name="id_objetivos" value="${objetivo.id_objetivos}" />
+                </c:if>
 
                 <!-- Nombre del Objetivo -->
                 <label for="nombre_objetivo">Nombre del Objetivo:</label>
@@ -24,7 +29,7 @@
 
                 <!-- Diario -->
                 <label for="diario">Diario:</label>
-                <input type="text" id="diario" name="diario" value="${objetivo.diario}" required />
+                <textarea id="diario" name="diario" rows="5" required>${objetivo.diario}</textarea>
 
                 <!-- Tipo de Objetivo como ComboBox -->
                 <label for="tipo_objetivo">Tipo de Objetivo:</label>
@@ -47,8 +52,12 @@
                 <label for="fecha_fin_objetivo">Fecha de Fin:</label>
                 <input type="date" id="fecha_fin_objetivo" name="fecha_fin_objetivo" value="${objetivo.fecha_fin_objetivo}" />
 
-                <!-- Botón Guardar -->
-                <button type="submit">Guardar Objetivo</button>
+                <button type="submit">
+                    <c:choose>
+                        <c:when test="${isNew}">Crear Objetivo</c:when>
+                        <c:otherwise>Actualizar Objetivo</c:otherwise>
+                    </c:choose>
+                </button>
             </form>
         </div>
     </body>

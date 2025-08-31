@@ -8,8 +8,9 @@
     <link rel="stylesheet" type="text/css" href="/css/estilos.css">
 </head>
 <body>
+    <h1 class="titulo-fondo">LIMPIA HUMOS</h1>
     <div class="container">
-        <h1>Bienvenido a la Aplicación</h1>
+        <h1>BIEN VENIDO</h1>
         <p>${mensaje}</p>
 
         <!-- Formulario de Login con Spring -->

@@ -33,7 +33,7 @@ public class ObjetivosController extends BaseController {
 
     @Autowired
     ObjetivosDAO objetivoDAO;
-    
+
     @Autowired
     UsuarioDAO usuarioDAO;
 
@@ -42,7 +42,7 @@ public class ObjetivosController extends BaseController {
         List<Objetivos> objetivos = objetivoDAO.obtenerTodosObjetivos(idUsuario);
         model.addAttribute("objetivosList", objetivos);
         model.addAttribute("id_usuario", idUsuario);
-        model.addAttribute("titulo", "CREAR OBJETIVO");
+        
         return "objetivosConsulta";
     }
 
@@ -51,14 +51,16 @@ public class ObjetivosController extends BaseController {
         Objetivos objetivo = objetivoDAO.obtenerObjetivoPorId(id);
         model.addAttribute("objetivo", objetivo);
         model.addAttribute("titulo", "EDITAR OBJETIVO");
+        model.addAttribute("id_usuario", objetivo.getUsuario().getId_usuario());
         return "objetivosDetalle"; // Redirige a la página de edición
     }
     // Método para mostrar la página de creación de objetivos
 
     @GetMapping("/crear")
-    public String crearObjetivoForm(@RequestParam("id_usuario")Long idUsuari, Model model) {
+    public String crearObjetivoForm(@RequestParam("id_usuario") Long idUsuari, Model model) {
         
-        model.addAttribute("id_usuario",idUsuari);
+        model.addAttribute("titulo", "CREAR OBJETIVO");
+        model.addAttribute("id_usuario", idUsuari);
         // Crear un nuevo objeto objetivo vacío
         Objetivos objetivo = new Objetivos();
         // Pasar el objeto vacío al modelo para que se pueda vincular en el formulario
@@ -68,21 +70,24 @@ public class ObjetivosController extends BaseController {
 
     @PostMapping("/guardar")
     public String guardarObjetivo(@RequestParam("id_usuario") Long idUsuario,
-                                @ModelAttribute("objetivo") Objetivos objetivo,
-                                Model model) {
-        // Asignar el usuario con el id_usuario
+            @ModelAttribute("objetivo") Objetivos objetivo,
+            Model model) {
         Usuario usuario = new Usuario();
         usuario.setId_usuario(idUsuario);
         objetivo.setUsuario(usuario);
 
-        // Guardar el objetivo en la base de datos
-        objetivoDAO.guardarObjetivo(objetivo);
+        if (objetivo.getId_objetivos()== null) {
+            // Crear nuevo
+            objetivoDAO.crearObjetivo(objetivo);
+        } else {
+            // Actualizar existente
+            objetivoDAO.guardarObjetivo(objetivo);
+        }
 
-        // Redirigir al listado de objetivos
-        return "redirect:/limpiaHumos/objetivos?id_usuario="+idUsuario;
+        return "redirect:/limpiaHumos/objetivos?id_usuario=" + idUsuario;
     }
-    
-  // Conversor para las fechas
+
+    // Conversor para las fechas
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

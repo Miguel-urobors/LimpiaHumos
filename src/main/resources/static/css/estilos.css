@@ -18,7 +18,8 @@ textarea.error {
 /* Estilo general para el formulario si quieres usarlo */
 form {
     font-family: Arial, sans-serif;
-    max-width: 500px;
+    max-width: 1000px; /* Aumentamos el ancho máximo */
+    width: 90%;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 8px;
@@ -276,7 +277,8 @@ button:hover {
 }
 
 .form-container {
-    max-width: 600px;
+    max-width: 1000px; /* Aumentamos el ancho máximo */
+    width: 90%;         /* Que use el 90% del viewport si puede */
     margin: 50px auto;
     padding: 40px;
     background-color: #ffffff;
@@ -330,4 +332,84 @@ button:hover {
 
 .form-container button:hover {
     background-color: #16a085;
+}
+
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: vertical; /* permite ajustar la altura del textarea */
+    transition: border 0.3s ease;
+}
+
+.form-container textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Contenedor del botón Volver */
+.volver-btn-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Estilo del botón Volver */
+.btn-volver {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+.btn-volver:hover {
+    background-color: #2980b9;
+    transform: scale(1.02);
+}
+
+/* Nuevo contenedor para la grilla de estadísticas */
+.estadisticas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* Ajustamos el tamaño y distribución para lograr 2 arriba y 1 abajo */
+.estadisticas-grid .estadistica-bloque {
+    flex: 1 1 calc(45% - 20px); /* 2 por fila */
+    max-width: 260px;
+}
+
+/* Para forzar la tercera tarjeta a la siguiente línea */
+.estadisticas-grid .estadistica-bloque:nth-child(3) {
+    flex-basis: 100%;
+    max-width: 260px;
+}
+
+/* Título decorativo de fondo */
+.titulo-fondo {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.08); /* Muy claro y discreto */
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    z-index: 0;
+    pointer-events: none; /* No bloquea clics */
+    user-select: none;    /* No se puede seleccionar */
+    white-space: nowrap;
 }

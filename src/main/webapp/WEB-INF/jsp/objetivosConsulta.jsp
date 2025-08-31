@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
     </head>
     <body>
-
+        <h1 class="titulo-fondo">LIMPIA HUMOS</h1>
         <div class="containerObjetivos">
             <h1>Lista de Objetivos</h1>
 
@@ -48,6 +48,14 @@
                     </c:forEach>
                 </tbody>
             </table>
+
+            <div class="volver-btn-container">
+                <a href="${pageContext.request.contextPath}/limpiaHumos/datos?id_usuario=${id_usuario}">
+                    <button type="button" style="background-color: #3498db;">
+                        Volver
+                    </button>
+                </a>
+            </div>
 
         </div>
 

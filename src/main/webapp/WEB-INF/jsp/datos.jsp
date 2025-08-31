@@ -10,21 +10,24 @@
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
     </head>
     <body>
+        <h1 class="titulo-fondo">LIMPIA HUMOS</h1>
         <div class="containerDatos">
 
-            <div class="estadistica-bloque">
-                <h1><c:out value="${estadisticas.dinero_ahorrado / 100}" /> €</h1>
-                <strong>Dinero Ahorrado</strong>
-            </div>
+            <div class="estadisticas-grid">
+                <div class="estadistica-bloque">
+                    <h1><c:out value="${estadisticas.dinero_ahorrado / 100}" /> €</h1>
+                    <strong>Dinero Ahorrado</strong>
+                </div>
 
-            <div class="estadistica-bloque">
-                <h1><c:out value="${estadisticas.tiempo_sin_fumar}" /></h1>
-                <strong>Días sin fumar</strong>
-            </div>
+                <div class="estadistica-bloque">
+                    <h1><c:out value="${estadisticas.tiempo_sin_fumar}" /></h1>
+                    <strong>Días sin fumar</strong>
+                </div>
 
-            <div class="estadistica-bloque">
-                <h1><c:out value="${estadisticas.cigarillos_no_fumados}" /></h1>
-                <strong>Cigarrillos no fumados</strong>
+                <div class="estadistica-bloque">
+                    <h1><c:out value="${estadisticas.cigarillos_no_fumados}" /></h1>
+                    <strong>Cigarrillos no fumados</strong>
+                </div>
             </div>
 
             <div class="botones-navegacion">
