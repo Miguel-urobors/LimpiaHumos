@@ -42,6 +42,7 @@ public class ObjetivosController extends BaseController {
         List<Objetivos> objetivos = objetivoDAO.obtenerTodosObjetivos(idUsuario);
         model.addAttribute("objetivosList", objetivos);
         model.addAttribute("id_usuario", idUsuario);
+        model.addAttribute("titulo", "CREAR OBJETIVO");
         return "objetivosConsulta";
     }
 
@@ -49,7 +50,8 @@ public class ObjetivosController extends BaseController {
     public String editarObjetivo(@PathVariable Long id, Model model) {
         Objetivos objetivo = objetivoDAO.obtenerObjetivoPorId(id);
         model.addAttribute("objetivo", objetivo);
-        return "editarObjetivo"; // Redirige a la página de edición
+        model.addAttribute("titulo", "EDITAR OBJETIVO");
+        return "objetivosDetalle"; // Redirige a la página de edición
     }
     // Método para mostrar la página de creación de objetivos
 

@@ -11,7 +11,7 @@
     </head>
     <body>
 
-        <div class="container">
+        <div class="containerObjetivos">
             <h1>Lista de Objetivos</h1>
 
             <!-- Botón para añadir un nuevo objetivo -->
@@ -23,7 +23,6 @@
             <table border="1">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Diario</th>
                         <th>Tipo de Objetivo</th>
@@ -36,7 +35,6 @@
                     <!-- Iterar sobre la lista de objetivos -->
                     <c:forEach var="objetivo" items="${objetivosList}">
                         <tr>
-                            <td>${objetivo.id_objetivos}</td>
                             <td>${objetivo.nombre_objetivo}</td>
                             <td>${objetivo.diario}</td>
                             <td>${objetivo.tipo_objetivo}</td>

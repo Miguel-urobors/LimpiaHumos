@@ -7,6 +7,7 @@ package com.limpiahumos.LimpiaHumos.controller;
 import com.limpiahumos.LimpiaHumos.DAO.CuestionarioDAO;
 import com.limpiahumos.LimpiaHumos.DAO.EstadisticaFumadorDAO;
 import com.limpiahumos.LimpiaHumos.DAO.UsuarioDAO;
+import com.limpiahumos.LimpiaHumos.entity.Cuestionario;
 import com.limpiahumos.LimpiaHumos.entity.EstadisticaFumador;
 import com.limpiahumos.LimpiaHumos.entity.Usuario;
 import jakarta.transaction.Transactional;
@@ -67,7 +68,9 @@ public class RegistrarseController extends BaseController{
         return "registro";
     }
     if (usuario.getCuestionario() != null && usuario.getCuestionario().getId_cuestionario() == null) {
-        cuestionarioDAO.save(usuario.getCuestionario());
+        Cuestionario temCuest = usuario.getCuestionario();
+        temCuest.setUsuario(usuario);
+        cuestionarioDAO.save(temCuest);
     }
      usuario.setEstadisticaFumador( iniciarEstadisticas(usuario));
         for (EstadisticaFumador ef : usuario.getEstadisticaFumador()) {

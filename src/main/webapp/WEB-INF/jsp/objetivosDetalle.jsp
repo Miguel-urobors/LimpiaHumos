@@ -10,38 +10,47 @@
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
     </head>
     <body>
+        <div class="form-container">
+            <h1>Crear Objetivo</h1>
 
-        <h1>Crear Objetivo</h1>
+            <!-- Formulario para crear un objetivo -->
+            <form action="${pageContext.request.contextPath}/limpiaHumos/objetivos/guardar" method="post">
+                <!-- Campo oculto para el id_usuario -->
+                <input type="hidden" name="id_usuario" value="${id_usuario}" />
 
-        <!-- Formulario para crear un objetivo -->
-        <form action="${pageContext.request.contextPath}/limpiaHumos/objetivos/guardar" method="post">
-            <!-- Campo oculto para el id_usuario -->
-            <input type="hidden" name="id_usuario" value="${id_usuario}" />
+                <!-- Nombre del Objetivo -->
+                <label for="nombre_objetivo">Nombre del Objetivo:</label>
+                <input type="text" id="nombre_objetivo" name="nombre_objetivo" value="${objetivo.nombre_objetivo}" required />
 
-            <!-- Campo para el nombre del objetivo -->
-            <label for="nombre_objetivo">Nombre del Objetivo:</label>
-            <input type="text" id="nombre_objetivo" name="nombre_objetivo" value="${objetivo.nombre_objetivo}" required><br><br>
+                <!-- Diario -->
+                <label for="diario">Diario:</label>
+                <input type="text" id="diario" name="diario" value="${objetivo.diario}" required />
 
-            <!-- Campo para el diario -->
-            <label for="diario">Diario:</label>
-            <input type="text" id="diario" name="diario" value="${objetivo.diario}" required><br><br>
+                <!-- Tipo de Objetivo como ComboBox -->
+                <label for="tipo_objetivo">Tipo de Objetivo:</label>
+                <select id="tipo_objetivo" name="tipo_objetivo" required>
+                    <option value="">Elegir</option>
+                    <option value="Deporte" ${objetivo.tipo_objetivo == 'Deporte' ? 'selected' : ''}>Deporte</option>
+                    <option value="Acciones cotidianas" ${objetivo.tipo_objetivo == 'Acciones cotidianas' ? 'selected' : ''}>Acciones cotidianas</option>
+                    <option value="Alimentación" ${objetivo.tipo_objetivo == 'Alimentación' ? 'selected' : ''}>Alimentación</option>
+                    <option value="Higiene" ${objetivo.tipo_objetivo == 'Higiene' ? 'selected' : ''}>Higiene</option>
+                    <option value="Familia y relaciones" ${objetivo.tipo_objetivo == 'Familia y relaciones' ? 'selected' : ''}>Familia y relaciones</option>
+                    <option value="Trabajo o estudio" ${objetivo.tipo_objetivo == 'Trabajo o estudio' ? 'selected' : ''}>Trabajo o estudio</option>
+                    <option value="Otro" ${objetivo.tipo_objetivo == 'Otro' ? 'selected' : ''}>Otro</option>
+                </select>
 
-            <!-- Campo para el tipo de objetivo -->
-            <label for="tipo_objetivo">Tipo de Objetivo:</label>
-            <input type="text" id="tipo_objetivo" name="tipo_objetivo" value="${objetivo.tipo_objetivo}" required><br><br>
+                <!-- Fecha de Inicio -->
+                <label for="fecha_inicio_objetivo">Fecha de Inicio:</label>
+                <input type="date" id="fecha_inicio_objetivo" name="fecha_inicio_objetivo" value="${objetivo.fecha_inicio_objetivo}" required />
 
-            <!-- Campo para la fecha de inicio -->
-            <label for="fecha_inicio_objetivo">Fecha de Inicio:</label>
-            <input type="date" id="fecha_inicio_objetivo" name="fecha_inicio_objetivo" value="${objetivo.fecha_inicio_objetivo}" required><br><br>
+                <!-- Fecha de Fin -->
+                <label for="fecha_fin_objetivo">Fecha de Fin:</label>
+                <input type="date" id="fecha_fin_objetivo" name="fecha_fin_objetivo" value="${objetivo.fecha_fin_objetivo}" />
 
-            <!-- Campo para la fecha de fin -->
-            <label for="fecha_fin_objetivo">Fecha de Fin:</label>
-            <input type="date" id="fecha_fin_objetivo" name="fecha_fin_objetivo" value="${objetivo.fecha_fin_objetivo}"><br><br>
-
-            <!-- Botón para enviar el formulario -->
-            <button type="submit">Guardar Objetivo</button>
-        </form>
-
+                <!-- Botón Guardar -->
+                <button type="submit">Guardar Objetivo</button>
+            </form>
+        </div>
     </body>
 </html>
 
