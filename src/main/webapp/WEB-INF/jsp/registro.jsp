@@ -39,7 +39,7 @@
                 <form:errors path="fecha_nacimiento" cssClass="error"/>
                 <br/>
                 <br/>
-                
+
                 Contraseña: <form:input path="contraseña" type="password" />
                 <form:errors path="contraseña" cssClass="error"/>
                 <br/>
@@ -53,12 +53,12 @@
                 <form:errors path="cuestionario.cigarrillos_dia" cssClass="error"/>
                 <br/>
                 <br/>
-                
+
                 ¿Cuántas veces ha intentado parar de fumar?: <form:input path="cuestionario.intentos_parar" />
                 <form:errors path="cuestionario.intentos_parar" cssClass="error"/>
                 <br/>
                 <br/>
-                
+
                 Su razón para parar de fumar: 
                 <form:textarea path="cuestionario.razon_parar" rows="4" cols="50"></form:textarea>
                 <form:errors path="cuestionario.razon_parar" cssClass="error"/>
@@ -68,6 +68,13 @@
                 <input type="submit" value="Enviar" />
 
             </form:form>
+            <div class="volver-btn-container">
+                <a href="${pageContext.request.contextPath}/limpiaHumos/datos?id_usuario=${id_usuario}">
+                    <button type="button" style="background-color: #3498db;">
+                        Volver
+                    </button>
+                </a>
+            </div>
         </div>
     </body>
 

@@ -413,3 +413,48 @@ button:hover {
     user-select: none;    /* No se puede seleccionar */
     white-space: nowrap;
 }
+.containerMetas {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Estilo para la tabla dentro del contenedor */
+.containerMetas table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+}
+
+.containerMetas thead {
+    background-color: #3498db;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.containerMetas th,
+.containerMetas td {
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.containerMetas tbody tr:nth-child(even) {
+    background-color: #f2f9fd;
+}
+
+.containerMetas tbody tr:hover {
+    background-color: #e0f0fa;
+    transition: background-color 0.3s ease;
+}

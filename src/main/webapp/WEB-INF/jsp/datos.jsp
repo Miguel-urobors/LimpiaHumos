@@ -32,6 +32,7 @@
 
             <div class="botones-navegacion">
                 <form action="${pageContext.request.contextPath}/limpiaHumos/metas" method="get">
+                    <input type="hidden" name="id_usuario" value="${estadisticas.usuario.id_usuario}" />
                     <button type="submit">Ir a Metas</button>
                 </form>
 

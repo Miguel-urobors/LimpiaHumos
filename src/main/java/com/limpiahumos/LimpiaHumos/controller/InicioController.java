@@ -27,7 +27,7 @@ public class InicioController extends BaseController{
 
     @GetMapping("")
     public String inicio(Model model) {
-        model.addAttribute("mensaje", "¡Has llegado a la página de inicio!");
+        model.addAttribute("mensaje", "Inicio de sesion de LimpiaHumos");
         model.addAttribute("usuarioLogin", new Usuario());
         return "inicio";
     }

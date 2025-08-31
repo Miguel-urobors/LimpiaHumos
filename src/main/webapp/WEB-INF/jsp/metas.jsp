@@ -10,7 +10,7 @@
     </head>
     <body>
         <h1 class="titulo-fondo">LIMPIA HUMOS</h1>
-        <div class="container">
+        <div class="containerMetas">
             <h1>Metas Disponibles</h1>
             <table>
                 <thead>
@@ -24,13 +24,21 @@
                     <%-- La clave 'items="${metas}"' coincide con el nombre que le diste en el controlador --%>
                     <c:forEach var="meta" items="${metas}">
                         <tr>
-                            <td>${meta.id_metas}</td>
+                            
                             <td>${meta.nombre}</td>
                             <td>${meta.condicion}</td>
+                            <td>${meta.fecha_desbloqueo}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
+            <div class="volver-btn-container">
+                <a href="${pageContext.request.contextPath}/limpiaHumos/datos?id_usuario=${id_usuario}">
+                    <button type="button" style="background-color: #3498db;">
+                        Volver
+                    </button>
+                </a>
+            </div>        
         </div>
     </body>
 </html>

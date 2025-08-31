@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 import static com.limpiahumos.LimpiaHumos.controller.BaseController.BASE_CONTROLLER;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(MetasController.METAS_CONTROLLER)
@@ -22,12 +23,9 @@ public class MetasController {
     MetasDAO metasDAO;
 
     @GetMapping("")
-    public String metas(
-            //            @RequestParam List<Objetivos> objetivosUsuario,
-            Model model
-    ) {
+    public String metas(@RequestParam("id_usuario") Long idUsuario,Model model) {
         List<Metas> metas = metasDAO.findAll();
-
+        model.addAttribute("id_usuario", idUsuario);
         model.addAttribute("metas", metas);
 
         return "metas";
