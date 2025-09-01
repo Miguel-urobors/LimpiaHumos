@@ -458,3 +458,53 @@ button:hover {
     background-color: #e0f0fa;
     transition: background-color 0.3s ease;
 }
+.registro-cuestionario-container {
+    position: relative;
+    background-color: #ffffff;
+    padding: 40px;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin: 60px auto;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Estilo general para los campos del formulario */
+.registro-cuestionario-container form label,
+.registro-cuestionario-container form input,
+.registro-cuestionario-container form select,
+.registro-cuestionario-container form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+/* Mejora visual para textarea */
+.registro-cuestionario-container form textarea {
+    resize: vertical;
+    padding: 10px;
+}
+
+/* Mejora del botón de enviar */
+.registro-cuestionario-container input[type="submit"] {
+    margin-top: 25px;
+    width: 100%;
+    background-color: #1abc9c;
+    border: none;
+    padding: 15px 0;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 188, 156, 0.4);
+}
+
+.registro-cuestionario-container input[type="submit"]:hover {
+    background-color: #16a085;
+}

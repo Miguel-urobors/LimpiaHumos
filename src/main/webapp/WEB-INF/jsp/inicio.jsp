@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/estilos.css">
 </head>
 <body>
-    <h1 class="titulo-fondo">LIMPIA HUMOS</h1>
+    <h1 class="titulo-fondo">LIMPIA HUMOS</h1><br>
     <div class="container">
         <h1>BIEN VENIDO</h1>
         <p>${mensaje}</p>

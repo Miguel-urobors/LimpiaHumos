@@ -24,10 +24,21 @@
                     <%-- La clave 'items="${metas}"' coincide con el nombre que le diste en el controlador --%>
                     <c:forEach var="meta" items="${metas}">
                         <tr>
-                            
+
                             <td>${meta.nombre}</td>
                             <td>${meta.condicion}</td>
                             <td>${meta.fecha_desbloqueo}</td>
+                            <td>${meta.desbloqueada}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${meta.desbloqueada}">
+                                        <span class="icono-verde">&#10004;</span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="icono-rojo">&#10008;</span>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

@@ -12,7 +12,7 @@
     </head>
     <body>
         <h1 class="titulo-fondo">LIMPIA HUMOS</h1>
-        <div class="container">
+        <div class="registro-cuestionario-container">
             <form:form action="/limpiaHumos/registrarse/crearUsuario" method="post" modelAttribute="usuario">
 
                 Nombre: <form:input path="nombre" />
